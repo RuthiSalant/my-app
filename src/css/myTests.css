@@ -27,9 +27,12 @@ body {
     /* text-transform: uppercase; */
     overflow: hidden;
     transition: 0.3s ease;
+    float: right;
   }
   .newTest button:hover,  button:focus {
-    border-color: #ed2553}
+    border-color: #ed2553
+    
+  }
     
 
 
@@ -46,3 +49,7 @@ body {
         opacity: 1;
         transform: scale(10);
       }
+
+
+
+      

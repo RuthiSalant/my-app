@@ -25,7 +25,11 @@ export function Login() {
     setForgotp(true);
     setOpen(!open)
   }
-
+const handleSubmit=async a=>{
+  a.preventDefault();
+  await GetUserByNamePassword(name, password)
+ 
+}
   return (
     <div id="all">
       {hideForm ?
@@ -43,7 +47,7 @@ export function Login() {
 
             <h1 className="title">Login</h1>
 
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="input-container">
                 <input type="#{type}" id="name" required="required" onChange={(e) => setName(e.target.value)} />
                 <label htmlFor="#{label}">Username</label>
@@ -55,7 +59,7 @@ export function Login() {
                 <div className="bar"></div>
               </div>
               <div className="button-container">
-                <button onClick={login}><span>GO</span></button>
+                <button type="submit"><span>GO</span></button>
               </div>
               <div className="footer" ><a onClick={setstate}>Forgot your password?</a></div>
               {forgotp && <ForgotPassword open={open} setOpen={setOpen}/>}

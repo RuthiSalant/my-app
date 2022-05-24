@@ -1,0 +1,132 @@
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700);
+body {
+  background: #f1f1f1;
+  color: #333;
+}
+
+h1 {
+  font-family: "Roboto Condensed";
+  font-size: 24px;
+  font-weight: 400;
+  color: #ed2553;
+  margin-bottom: 40px;
+}
+
+.main {
+  background-color: #fff;
+  border: 1px solid #e7e7e7;
+  margin: 80px auto;
+  width: 700px;
+  padding: 40px 30px 60px 40px;
+}
+
+.input-box {
+  display: block;
+  position: relative;
+  margin-bottom: 30px;
+}
+.input-box input {
+  padding: 10px 0;
+  background: none;
+  border: none;
+  border-bottom: solid 2px #c9c9c9;
+  width: 50%;
+  color: #0a0a0a;
+  -webkit-transition: all 0.6s ease-out 0s;
+  transition: all 0.6s ease-out 0s;
+  font-size: large;
+  
+}
+.input-box input:focus, .input-box input:active {
+  outline: none;
+}
+.input-box label {
+  /* position:relative; */
+  top: 16%;
+  left: 0;
+  color: #999;
+  font-family: "Roboto Condensed";
+  font-size: 18px;
+  font-weight: 300;
+  font-style: italic;
+  pointer-events: none;
+  -webkit-transition: all 0.15s ease-out 0s;
+  transition: all 0.15s ease-out 0s;
+}
+.input-box input:focus + label,
+.input-box input:valid + label {
+  top: -12px;
+  font-size: 14px;
+  color: #c9c9c9;
+}
+.input-box input:focus {
+  border-bottom: solid 2px #EE3769;
+}
+
+.btn {
+  background-color: #ed2553;
+  font-family: "Roboto Condensed";
+  font-size: 18px;
+  font-weight: 400;
+  color: #fff;
+  padding: 0.2em 3em;
+  border-radius: 5px;
+  border: 0;
+  border-bottom: 5px solid #ed2553;
+  float: right;
+  margin-top: 10px;
+  /* -webkit-user-select: none; */
+}
+.btn:hover {
+  cursor: pointer;
+}
+.btn:focus {
+  outline: none;
+}
+.btn:active {
+  transform: translate(0, 5px);
+  border-bottom: 1px solid #ed2553;
+}
+.btn:active::after {
+  content: "";
+  display: block;
+  height: 4px;
+}
+
+.card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 60px 0 40px 0;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: 0.3s ease;
+  /* Title */
+  /* Inputs */
+  /* Button */
+  /* Footer */
+  /* Alt Card */
+}
+.card:first-child {
+  display: none;
+  /* background: #970b0b; */
+  height: 10px;
+  border-radius: 5px 5px 0 0;
+  margin: 0 10px;
+  padding: 0;
+}
+.card .title {
+  position: relative;
+  z-index: 1;
+  border-left: 5px solid #ed2553;
+  margin: 0 0 35px;
+  padding: 10px 0 10px 50px;
+  color: #ed2553;
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+

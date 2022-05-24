@@ -1,0 +1,65 @@
+@import 'primereact/resources/themes/lara-light-indigo/theme.css';
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+
+.accordion-demo .accordion-custom i, .accordion-demo .accordion-custom span {
+    vertical-align: middle;
+}
+
+.accordion-demo .accordion-custom span {
+    margin: 0 .5rem;
+}
+
+.accordion-demo .p-accordion p {
+    line-height: 1.5;
+    margin: 0;
+}
+.dialog-demo .p-button {
+    margin: 0 .5rem 0 0;
+     min-width: 10rem;
+   }
+   
+   .dialog-demo p {
+     margin: 0;
+     line-height: 1.5;
+   }
+   
+   .dialog-demo .p-dialog .p-button {
+     min-width: 6rem;
+   }
+
+   body {
+     width: 40%;
+    height:50%;
+     margin: 0;   
+    display:ruby-base;
+    margin: auto;
+  }
+
+
+  .text{
+    text-align:center;
+     font-style: normal;
+    font-family: 'Franklin Gothic Medium';
+      font-size: 40px
+  }
+
+
+  .custom-scrolltop {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 40px;    
+    background-color:#ed2553!important;
+}
+.custom-scrolltop:hover {
+    background-color:#7384d1 !important;
+}
+
+.custom-scrolltop .p-scrolltop-icon {
+    font-size: 1rem;
+    color: var(--primary-color-text);
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
