@@ -1,27 +1,24 @@
 import React from 'react';
-import '../css/test.css';
+import '../../../css/test.css';
 import { Dialog } from 'primereact/dialog';
 import { Button } from 'primereact/button';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
-import { postQuestion, getAllQuestions, postLocation } from '../api/question'
-import { Accordion, AccordionTab } from 'primereact/accordion';
-import '../css/testDetails.css';
+import { postLocation, } from '../../../api/examLocation'
+import '../../../css/testDetails.css';
 import { Calendar } from 'primereact/calendar';
-import { InputTextarea } from 'primereact/inputtextarea';
 import 'primeicons/primeicons.css';
-import { ScrollTop } from 'primereact/scrolltop';
-import { ScrollPanel } from 'primereact/scrollpanel';
+import {getAllExamsLocation} from '../../../api/examLocation'
 
 export function ExamPlaces() {
-    const [value3, setValue3] = useState(null);
+
     const [displayResponsive, setDisplayResponsive] = useState(false);
     const [position, setPosition] = useState('center');
     const [location, setLocation] = useState('');
     const [date, setDate] = useState('');
     const [numExaminees, setNumExaminees] = useState(0);
     const [className, setClassName] = useState('');
-  
+
   
     const dialogFuncMap = {
       'displayResponsive': setDisplayResponsive
@@ -39,7 +36,10 @@ export function ExamPlaces() {
     }
   
     const addLoc=async()=>{
+      
       await postLocation(location, className, date, numExaminees)
+      var data = await getAllExamsLocation();
+      console.log(data);
     }
   
     const renderFooter = (name) => {
@@ -68,7 +68,7 @@ export function ExamPlaces() {
           <div className="input-box">
             <div className="field col-12 md:col-4">
               <label style={{ fontStyle: "normal", fontFamily: 'Franklin Gothic Medium', fontSize: '20px' }}>Exam date:  </label>
-              <Calendar id="calendar" value={value3} onChange={(e) => setValue3(e.value)} className="p-invalid" />
+              <Calendar id="calendar" value={date} onChange={(e) => setDate(e.target.value)} className="p-invalid" />
             </div>
           </div>
           <div className="input-box">
@@ -77,7 +77,6 @@ export function ExamPlaces() {
           </div>
         </Dialog>
   
-        {/* <button id="save" className="btn">Save</button> */}
         <button id="Add_question" className="btn" onClick={() => onClick('displayResponsive')}>Add exam locaion</button>
       </div>
     )

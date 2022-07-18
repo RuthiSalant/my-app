@@ -1,7 +1,9 @@
 import { IoAddOutline } from "react-icons/io5";
-import '../css/login.css';
+import '../../css/login.css';
 import { useState } from 'react';
-import { GetUserByNamePassword, postUser, getPassByEmail } from '../api/user'
+import { GetUserByNamePassword, postUser, getPassByEmail } from '../../api/user'
+import store from "../../store";
+import userInAction from '../../action/userAction'
 
 export function Login() {
   const [hideForm, setHideForm] = useState(true);
@@ -15,21 +17,27 @@ export function Login() {
   const [forgotp, setForgotp] = useState(false);
   const [open, setOpen] = useState(false);
 
-  async function login() {
-    await GetUserByNamePassword(name, password)
-  }
   async function register() {
-    await postUser(newName, newPassword, newEmail, newId, newPhone);
+    await postUser(newName, newPassword, newEmail, newId, newPhone).then(data => {
+      debugger
+      console.log(data, "data");
+      alert("welcome " + data.name)
+      store.dispatch(userInAction(data));
+      console.log('after dispatch', store.getState());
+  
+    });
+
+
   }
-  function setstate(){
+  function setstate() {
     setForgotp(true);
     setOpen(!open)
   }
-const handleSubmit=async a=>{
-  a.preventDefault();
-  await GetUserByNamePassword(name, password)
- 
-}
+  const handleSubmit = async a => {
+    a.preventDefault();
+    await GetUserByNamePassword(name, password)
+
+  }
   return (
     <div id="all">
       {hideForm ?
@@ -46,8 +54,8 @@ const handleSubmit=async a=>{
             <button className="buttonn" onClick={() => setHideForm(false)}><IoAddOutline /></button>
 
             <h1 className="title">Login</h1>
-
-            <form onSubmit={handleSubmit}>
+            <>
+              {/* <form onSubmit={handleSubmit}> */}
               <div className="input-container">
                 <input type="#{type}" id="name" required="required" onChange={(e) => setName(e.target.value)} />
                 <label htmlFor="#{label}">Username</label>
@@ -59,18 +67,20 @@ const handleSubmit=async a=>{
                 <div className="bar"></div>
               </div>
               <div className="button-container">
-                <button type="submit"><span>GO</span></button>
+                <button onClick={handleSubmit}><span>GO</span></button>
               </div>
               <div className="footer" ><a onClick={setstate}>Forgot your password?</a></div>
-              {forgotp && <ForgotPassword open={open} setOpen={setOpen}/>}
-            </form>
+              {forgotp && <ForgotPassword open={open} setOpen={setOpen} />}
+              {/* </form> */}
+            </>
           </div> :
           <div className="card alt"  >
             <div className="toggle"></div>
             <h1 className="title">Register
               <div className="close" onClick={() => setHideForm(true)}></div>
             </h1>
-            <form>
+            {/* <form> */}
+            <>
               <div className="input-container" id='b' >
                 <input type="#{type}" id="newName" required="required" onChange={(e) => setNewName(e.target.value)} />
                 <label htmlFor="#{label}">Username</label>
@@ -97,9 +107,9 @@ const handleSubmit=async a=>{
                 <div className="bar"></div>
               </div>
               <div className="button-container">
-                <button onClick={register}><span>Next</span></button>
+                <button onClick={() => register()}><span>Next</span></button>
               </div>
-            </form>
+              {/* </form> */}</>
           </div>}
       </div>
     </div>
@@ -113,28 +123,28 @@ function ForgotPassword(props) {
   document.getElementById("name").required = false;
   document.getElementById("password").required = false;
 
-   function ConfirmPassword(){
+  function ConfirmPassword() {
     getPassByEmail(verifyEmail);
     props.setOpen(!props.open)
-   }
+  }
   return (
     <div >
-      {props.open?
-      <div>
-      <br></br>
-      <div>
-        <h2 className='forgotPass' style={{ color: "#ed2553" }}>Please verify your identity!</h2>
-        <div className="input-container">
-          <input type="#{type}" id="newEmail" required="required" onChange={(e)=>setVerifyEmail(e.target.value)}/>
-          <label htmlFor="#{label}">Email</label>
-          <div className="bar"></div>
-        </div>
-        <div className="button-container">
-          <button onClick={ConfirmPassword}><span>Submit</span></button>
-        </div>
-      </div>
-      </div>:
-      <h1></h1>}
+      {props.open ?
+        <div>
+          <br></br>
+          <div>
+            <h2 className='forgotPass' style={{ color: "#ed2553" }}>Please verify your identity!</h2>
+            <div className="input-container">
+              <input type="#{type}" id="newEmail" required="required" onChange={(e) => setVerifyEmail(e.target.value)} />
+              <label htmlFor="#{label}">Email</label>
+              <div className="bar"></div>
+            </div>
+            <div className="button-container">
+              <button onClick={ConfirmPassword}><span>Submit</span></button>
+            </div>
+          </div>
+        </div> :
+        <h1></h1>}
     </div>
   )
 }
