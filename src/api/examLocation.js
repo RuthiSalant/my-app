@@ -28,5 +28,3 @@ export async function getAllExamsLocation() {
      res=response.json();
     return res;
   }
-
-
