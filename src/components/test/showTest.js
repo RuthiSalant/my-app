@@ -64,7 +64,7 @@ export function ShowTest(props)  {
     }
     // useEffect(() => {
     //     async function fetchData() {
-    //       const response = await fetch(`http://localhost:4015/test/${id}`)
+    //       const response = await fetch(`http://localhost:4000/test/${id}`)
     //       var res
     //       if (response.ok){
     //         res = await response.json();

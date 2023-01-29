@@ -85,7 +85,7 @@ export function ShowQuestions() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`http://localhost:4015/question`)
+      const response = await fetch(`http://localhost:4000/question`)
       var res
       if (response.ok) {
         res = await response.json();
@@ -142,7 +142,7 @@ export function ShowExamsLocations() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`http://localhost:4015/examLocation`)
+      const response = await fetch(`http://localhost:4000/examLocation`)
       var res
       if (response.ok)
         res = await response.json();
