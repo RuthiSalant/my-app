@@ -1,12 +1,10 @@
-import { Login } from './components/login';
+import { Login } from './components/login/login';
 import { Routes, Route, Switch, BrowserRouter } from 'react-router-dom'
 import { React } from "react";
-import { TestList } from './components/myTests';
-import PageNotFound from './components/PageNotFound'
-import { Test } from './components/editTest'
-import { EditorDemo } from './components/myTests'
-import { ShowTest } from './components/showTest'
-
+import PageNotFound from './components/page-not-found/PageNotFound'
+import { Test } from './components/test/editTest/editTest'
+import { EditorDemo,TestList } from './components/test/myTests'
+import { ShowTest } from './components/test/showTest'
 function App() {
   return (
     <BrowserRouter>
@@ -17,7 +15,7 @@ function App() {
         <Route path='/editTest' element= {<Test />} />
         <Route path='/editorDemo' element= {<EditorDemo />} />
         <Route path='/showTest' element= {<ShowTest />} />
-
+        <Route path='/showTest' element= {<ShowTest />} />
       </Routes>
     </BrowserRouter>
   );
