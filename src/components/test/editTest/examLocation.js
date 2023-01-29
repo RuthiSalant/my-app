@@ -9,8 +9,7 @@ import '../../../css/testDetails.css';
 import { Calendar } from 'primereact/calendar';
 import 'primeicons/primeicons.css';
 import { getAllExamsLocation } from '../../../api/examLocation'
-import { ShowExamsLocations } from './editTest'
-
+import {ShowExamsLocations} from './editTest'
 export function ExamPlaces() {
 
   const [displayResponsive, setDisplayResponsive] = useState(false);
@@ -19,7 +18,7 @@ export function ExamPlaces() {
   const [date, setDate] = useState('');
   const [numExaminees, setNumExaminees] = useState(0);
   const [className, setClassName] = useState('');
-  const [allExamsLocation, setAllExamsLocation] = useState('');
+  const [allExamsLocation,setAllExamsLocation] = useState('');
 
   const dialogFuncMap = {
     'displayResponsive': setDisplayResponsive
@@ -38,8 +37,8 @@ export function ExamPlaces() {
 
   const addLoc = async () => {
     await postLocation(location, className, date, numExaminees)
-    setAllExamsLocation(await getAllExamsLocation());
-    console.log(allExamsLocation, 'allExamsLocation');
+    setAllExamsLocation ( await getAllExamsLocation());
+    console.log(allExamsLocation,'allExamsLocation');
   }
 
   const renderFooter = (name) => {

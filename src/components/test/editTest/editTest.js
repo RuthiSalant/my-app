@@ -21,13 +21,13 @@ import { ConfirmPopup, confirmPopup } from 'primereact/confirmpopup';
 export function Test() {
   const [date, setDate] = useState(null);
   const [description,setDescription]=useState("");
-   const user= store.getState();
+  // const user= store.getState();
 
-  function saveTest(props) {
+  function saveTest() {
     debugger
     // console.log('user',user);
-      postTest(user._id,date,props.question,props.location);
-    // postTest(user._id, date, description, question, location);
+    //  postTest(user._id,date,props.question,props.location);
+   // postTest(user._id, date, description, question, location);
   }
   return (
     <div className="accordion-demo">
@@ -85,7 +85,7 @@ export function ShowQuestions() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`http://localhost:4000/question`)
+      const response = await fetch(`http://localhost:4015/question`)
       var res
       if (response.ok) {
         res = await response.json();
@@ -142,7 +142,7 @@ export function ShowExamsLocations() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch(`http://localhost:4000/examLocation`)
+      const response = await fetch(`http://localhost:4015/examLocation`)
       var res
       if (response.ok)
         res = await response.json();

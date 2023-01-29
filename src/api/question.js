@@ -1,5 +1,4 @@
 
-
 export async function postQuestion(question, answer) {
     debugger;
     var question = {
@@ -7,7 +6,7 @@ export async function postQuestion(question, answer) {
         answer: answer
     }
     
-   await fetch('http://localhost:4000/question/', {    
+   await fetch('http://localhost:4015/question/', {    
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(question)
@@ -20,7 +19,7 @@ export async function postQuestion(question, answer) {
 }
 
 export async function getAllQuestions() {
-    var response=await fetch(`http://localhost:4000/question`)
+    var response=await fetch(`http://localhost:4015/question`)
      var res;
      if (response.ok)
      res=response.json();
@@ -30,7 +29,7 @@ export async function getAllQuestions() {
   export async function deleteQuestion(id){
     console.log(id);
     debugger;
-    await fetch(`http://localhost:4000/question/${id}`, {
+    await fetch(`http://localhost:4015/question/${id}`, {
         method: 'DELETE'
           }
     ).then(response => response.json())
@@ -42,7 +41,7 @@ export async function getAllQuestions() {
   }
 
 //   export async function updateQuestion(id){
-//     await fetch(`http://localhost:4000/question/${id}`, {
+//     await fetch(`http://localhost:4015/question/${id}`, {
 //         method: 'DELETE'
 //     }
 //     ).then(response => response.json())

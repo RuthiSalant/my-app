@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 
 export async function GetUserByNamePassword(name, password) {
   debugger
-  await fetch(`http://localhost:4000/user/${name}/${password}`)
+  await fetch(`http://localhost:4015/user/${name}/${password}`)
     .then(response => {
       if (response.status === 200 && response.ok) {
         return response.text();
@@ -25,7 +25,7 @@ export async function GetUserByNamePassword(name, password) {
 }
 
 export async function getPassByEmail(email) {
-  await fetch(`http://localhost:4000/user/${email}`)
+  await fetch(`http://localhost:4015/user/${email}`)
     .then(response => {
       if (response.status === 200 && response.ok) {
         return response.json();
@@ -48,7 +48,7 @@ export async function getPassByEmail(email) {
 //     id:newId,
 //     phone:newPhone
 //   }
-//   await fetch('http://localhost:4000/user/', {
+//   await fetch('http://localhost:4015/user/', {
 //     method: 'POST',
 //     headers: { 'Content-Type': 'application/json' },
 //     body: JSON.stringify(user)
@@ -70,7 +70,7 @@ export async function postUser(newName, newPassword, newEmail, newId, newPhone) 
     phone: newPhone
   }
   debugger
-  return await fetch(`http://localhost:4000/user/`, {
+  return await fetch(`http://localhost:4015/user/`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user)
@@ -87,7 +87,7 @@ export async function postUser(newName, newPassword, newEmail, newId, newPhone) 
   // .catch((error) => {
   //   alert(`error: ${error}`);
   // })
-  // await fetch('http://localhost:4000/user/', {
+  // await fetch('http://localhost:4015/user/', {
   //   method: 'POST',
   //   headers: { 'Content-Type': 'application/json' },
   //   body: JSON.stringify(user)
