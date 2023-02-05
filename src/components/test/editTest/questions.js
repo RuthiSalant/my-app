@@ -16,7 +16,6 @@ import questionInAction from '../../../action/questionAction';
 
 
 export function Question() {
-  const [answer, setAnswer] = useState("");
   const [displayResponsive, setDisplayResponsive] = useState(false);
   const [position, setPosition] = useState('center');
   const [question, setQuestion] = useState("");
@@ -26,6 +25,7 @@ export function Question() {
   const [correctA, setCorrectA] = useState(false);
   const [correctB, setCorrectB] = useState(false);
   const [correctC, setCorrectC] = useState(false);
+  const [answer, setAnswer] = useState([]);
 
   const dialogFuncMap = {
     'displayResponsive': setDisplayResponsive
@@ -44,17 +44,14 @@ export function Question() {
 
   async function addQues() {
     //debugger
-    let answer=[];
     answer.push({ option: optionA, correctAnswer: correctA });
     answer.push({ option: optionB, correctAnswer: correctB });
     answer.push({ option: optionC, correctAnswer: correctC });
     setAnswer(answer);
     await postQuestion(question, answer).then(data => {
       debugger
-      //console.log(JSON.parse(data), "data");
-      //alert("welcome " + data.name)
+      // console.log(JSON.parse(data), "data");
       console.log(data);
-      console.log("ggggggggggggggg");
       questionStore.dispatch(questionInAction(data));
       debugger
       console.log('dispatch', questionStore.getState());

@@ -40,7 +40,7 @@ export function Login() {
   const handleSubmit = async a => {
     a.preventDefault();
     debugger
-  var data=  await GetUserByNamePassword(name, password)
+    var data=  await GetUserByNamePassword(name, password)
       debugger
       navigate('myTests')
       store.dispatch(userInAction(data));

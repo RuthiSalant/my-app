@@ -6,19 +6,22 @@ export async function postQuestion(question, answer) {
         answer: answer
     }
     
-   await fetch('http://localhost:4000/question/', {    
+   return await fetch('http://localhost:4000/question/', {    
         method: 'POST',
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(question)
     }
     ).then(data => data.json())
-    .then(response => {    
+    .then(response => { 
+      debugger;   
       return response;
     })
         .catch((error) => {
             alert(`error: ${error}`);
         })
 }
+
+
 
 export async function getAllQuestions() {
     var response=await fetch(`http://localhost:4000/question`)
