@@ -11,7 +11,8 @@ import '../../../css/testDetails.css';
 import { Calendar } from 'primereact/calendar';
 import { InputTextarea } from 'primereact/inputtextarea';
 import 'primeicons/primeicons.css';
-
+import questionStore from '../../../store';
+import questionInAction from '../../../action/questionAction';
 
 
 export function Question() {
@@ -48,7 +49,16 @@ export function Question() {
     answer.push({ option: optionB, correctAnswer: correctB });
     answer.push({ option: optionC, correctAnswer: correctC });
     setAnswer(answer);
-    await postQuestion(question, answer);
+    await postQuestion(question, answer).then(data => {
+      debugger
+      //console.log(JSON.parse(data), "data");
+      //alert("welcome " + data.name)
+      console.log(data);
+      console.log("ggggggggggggggg");
+      questionStore.dispatch(questionInAction(data));
+      debugger
+      console.log('dispatch', questionStore.getState());
+    });
   }
 
   const renderFooter = (name) => {

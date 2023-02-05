@@ -11,8 +11,10 @@ export async function postQuestion(question, answer) {
         headers: { 'Content-Type': 'application/json'},
         body: JSON.stringify(question)
     }
-    ).then(response => response.json())
-        .then(data => console.log(data))
+    ).then(data => data.json())
+    .then(response => {    
+      return response;
+    })
         .catch((error) => {
             alert(`error: ${error}`);
         })
